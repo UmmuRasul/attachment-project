@@ -24,10 +24,7 @@ wheels/
 .installed.cfg
 *.egg
 MANIFEST
-vbn/aws/
-vbn/aws/conf.py
-vbn/aws/utils.py
-vbn/settings.py
+
 
 
 
