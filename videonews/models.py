@@ -29,7 +29,7 @@ class News(models.Model):
     image = models.ImageField(upload_to='profile_pics')
     content = models.TextField()
     date = models.DateTimeField(default=timezone.now)
-    editor = models.ForeignKey(User, on_delete=models.CASCADE)
+    editor =models.CharField(max_length=100)
 
     def __str__(self):
         return self.categories
@@ -47,21 +47,8 @@ class Post(models.Model):
     content = models.TextField()
     comments = models.TextField()
     date_posted = models.DateTimeField(default=timezone.now)
-    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    author = models.CharField(max_length=100)
 
     def __str__(self):
         return self.title
     
-# class LNMOnline(models.Model):
-#     CheckOutRequestID = models.CharField(max_length=50, blank=True, null=True)
-#     MerchantRequestID = models.CharField(max_length=20, blank=True, null=True)
-#     Result_code =models.IntegerField(blank=True, null=True)
-#     ResultDesc = models.CharField(max_length=120, blank=True, null=True)
-#     Amount = models.FloatField(blank=True, null=True)
-#     MpesaReceiptNumber = models.CharField(max_length=15, blank=True, null=True)
-#     Balance = models.CharField(max_length=12, blank=True, null=True)
-#     Transaction_date = models.DateTimeField(blank=True, null=True)
-#     Phone_number = models.CharField(max_length=13, blank=True, null=True)
-
-#     def __str__(self):
-#         return f'{self.Phone_number} has sent {self.Amount} >> {self.MpesaReceiptNumber}'

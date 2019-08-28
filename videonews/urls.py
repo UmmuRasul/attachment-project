@@ -1,14 +1,10 @@
-from django.urls import include, path
 from rest_framework import routers
-from vbn.videonews import views
+from .api import PostViewSet, ContactUsViewSet, NewsViewSet, VideoViewSet
 
-router = routers.DefaultRouter()
-router.register(r'users', views.UserViewSet)
-router.register(r'groups', views.GroupViewSet)
+routers = routers.DefaultRouter()
+routers.register('api/post', PostViewSet, 'post')
+routers.register('api/news', NewsViewSet, 'news')
+routers.register('api/video', VideoViewSet, 'video')
+routers.register('api/contactus', ContactUsViewSet, 'contactus')
 
-# Wire up our API using automatic URL routing.
-# Additionally, we include login URLs for the browsable API.
-urlpatterns = [
-    path('', include(router.urls)),
-    path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
-]
+urlpatterns = routers.urls
