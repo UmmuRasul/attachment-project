@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'storages',
     'videonews',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -125,4 +126,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-from vbn.aws.conf import *
+
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticatedOrReadOnly'
+    ]
+}
